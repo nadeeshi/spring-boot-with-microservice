@@ -3,7 +3,10 @@ package com.example.nadee.demo.repository;
 import com.example.nadee.demo.domain.Tour;
 import com.example.nadee.demo.types.Difficulty;
 import com.example.nadee.demo.types.Region;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;
@@ -15,14 +18,15 @@ import java.util.Optional;
  * Tour - domain type
  * Integer - ID type (ID of the entity)
  */
-public interface TourRepository extends CrudRepository<Tour, Integer> {
+//public interface TourRepository extends CrudRepository<Tour, Integer> {
+public interface TourRepository extends PagingAndSortingRepository<Tour, Integer> {
 
     /**
      * Find Tours associated with the Tour Package
      * @param code - tour package code
      * @return list of tours
      */
-    List<Tour> findByTourPackageCode(@Param("code") String code);
+    Page<Tour> findByTourPackageCode(@Param("code") String code, Pageable pageable);
 
     /**
      * Return one Tour, because title is unique
@@ -43,4 +47,8 @@ public interface TourRepository extends CrudRepository<Tour, Integer> {
     List<Tour> findByTourPackageCodeAndRegion(String code, Region region);
 
     List<Tour> findByRegionIn(List<Region> regions);
+
+    Tour save(Tour tour);
+
+    Integer count();
 }

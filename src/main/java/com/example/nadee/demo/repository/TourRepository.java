@@ -4,6 +4,7 @@ import com.example.nadee.demo.domain.Tour;
 import com.example.nadee.demo.types.Difficulty;
 import com.example.nadee.demo.types.Region;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,7 +17,12 @@ import java.util.Optional;
  */
 public interface TourRepository extends CrudRepository<Tour, Integer> {
 
-    List<Tour> findByTourPackageCode(String code);
+    /**
+     * Find Tours associated with the Tour Package
+     * @param code - tour package code
+     * @return list of tours
+     */
+    List<Tour> findByTourPackageCode(@Param("code") String code);
 
     /**
      * Return one Tour, because title is unique

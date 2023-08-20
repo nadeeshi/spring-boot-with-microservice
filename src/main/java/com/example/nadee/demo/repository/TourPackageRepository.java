@@ -2,6 +2,7 @@ package com.example.nadee.demo.repository;
 
 import com.example.nadee.demo.domain.TourPackage;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
@@ -12,5 +13,5 @@ public interface TourPackageRepository extends CrudRepository<TourPackage, Strin
      * @param name - name of the package
      * @return optional of TourPackage
      */
-    Optional<TourPackage> findByName(String name);
+    Optional<TourPackage> findByName(@Param("name") String name);
 }

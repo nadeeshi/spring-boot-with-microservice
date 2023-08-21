@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * TourRepository interface
+ * Spring Data Repository - TourRepository interface
  * Tour - domain type
  * Integer - ID type (ID of the entity)
  */

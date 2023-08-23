@@ -9,6 +9,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import java.util.Optional;
 
 /**
+ * Spring Data Repository
  * @RespositoryRestResource - control access at the class level
  * @RestResource - control access at the method level
  */

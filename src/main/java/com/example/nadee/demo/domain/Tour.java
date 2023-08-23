@@ -4,6 +4,9 @@ import com.example.nadee.demo.types.Difficulty;
 import com.example.nadee.demo.types.Region;
 import jakarta.persistence.*;
 
+/**
+ * JPA entity - domain model
+ */
 @Entity
 public class Tour {
 

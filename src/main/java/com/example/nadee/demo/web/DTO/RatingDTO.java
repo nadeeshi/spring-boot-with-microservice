@@ -1,22 +1,25 @@
 package com.example.nadee.demo.web.DTO;
 
 import com.example.nadee.demo.domain.TourRating;
-
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.Range;
+import org.springframework.validation.annotation.Validated;
 
 /**
  * Data Transfer Object for Rating a Tour
  */
+@Validated
 public class RatingDTO {
 
-    @Min(0)
-    @Max(5)
+    // @Range(min = 0, max = 5)
+    @Min(value = 0) // These annotations work correctly with Long values, but there can be issues with Integer values due to their range and representation
+    @Max(value = 5)
     private Integer score;
 
-    @Size(max = 255)
+    @Size(max = 255) // Validating the size of collections, arrays, or strings
     private String comment;
 
     @NotNull
